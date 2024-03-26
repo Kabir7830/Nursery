@@ -17,7 +17,11 @@
       {% endblock title %}
   </title>
   <!-- Favicon -->
+  {% if company.favicon %}
+  <link rel="shortcut icon" href="/media/{{company.favicon}}" type="image/x-icon">
+  {%else%}
   <link rel="shortcut icon" href="{% static 'images/logo/Logo.svg' %}" type="image/x-icon">
+  {%endif%}
   <!-- Custom styles -->
   <link rel="stylesheet" href="{% static 'css/backend_style.min.css' %}">
   <style>
@@ -475,7 +479,7 @@
     <div class="container">
         <h2 class="main-title">
             {% block page-name %}
-              Dashboard
+              {{request.user.first_name | upper}}'s Dashboard
             {% endblock page-name %}
         </h2>
     {% block body %}

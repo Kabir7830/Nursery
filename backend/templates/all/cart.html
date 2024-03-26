@@ -6,6 +6,9 @@
 {% block body %}
   
 <style>
+  .header-area{
+    background-color: black;
+  }
 .ui-w-40 {
     width: 40px !important;
     height: auto;
@@ -29,10 +32,17 @@
 .heading{
   text-align: center;
 }
+.checkout-button:hover{
+  text-decoration: none;
+  font-size: 19px !important;
+}
+.cart-form{
+  margin-top:200px;
+}
 </style>
 
 
-<form action="{%url 'place-order'%}" method="post">
+<form action="{%url 'place-order'%}" method="post" class="cart-form">
   
 <div class="container px-3 my-5 clearfix">
     <!-- Shopping cart table -->
@@ -81,7 +91,7 @@
                     </td>
                   </tr>
                   <script>
-                    document.getElementById('id_total_{{cart.id}}').innerHTML =`₹${Number(document.getElementById(`id_cart_quantity_{{cart.id}}`).value) * Number(("{{cart.product.selling_price}}").match(/\d+/))};`
+                    document.getElementById('id_total_{{cart.id}}').innerHTML =`₹${Number(document.getElementById(`id_cart_quantity_{{cart.id}}`).value) * Number(("{{cart.product.selling_price}}").match(/\d+/))}`;
                     document.getElementById(`id_cart_quantity_{{cart.id}}`).addEventListener('change',()=>{
                         document.getElementById('id_total_{{cart.id}}').innerHTML = Number(document.getElementById(`id_cart_quantity_{{cart.id}}`).value) * Number(("{{cart.product.selling_price}}").match(/\d+/));
                     })
@@ -115,19 +125,10 @@
             <script>
               document.getElementById('id_datetime').value = new Date().toLocaleString();
             </script>
-            <div class="form-group">
-              <label for="">Address</label>
-              <select name="address" id="id_address" class="form-select" required>
-                {% for address in addresses %}
-                  <option value="{{address.id}}">{{address.house_no}} {{address.address_line_1}} {{address.city}} {{address.pin_code}}</option>
-                {% endfor %}
-              </select>
-              <br>
-              <a href="{% url 'add-address' %}" class="btn btn-primary">Add New +</a>
-            </div>
+            
             <div class="float-right">
               <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button>
-              <button type="submit" class="btn btn-lg btn-primary mt-2">Place order</button>
+              <a href="{% url 'checkout'%}" class="btn btn-lg btn-primary mt-2 checkout-button" >Checkout</a>
             </div>
         
           </div>

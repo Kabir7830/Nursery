@@ -6,6 +6,9 @@
 {% block body %}
   {% load custom_filter %}
 <style>
+  .header-area{
+    background-color: black;
+  }
 .ui-w-40 {
     width: 40px !important;
     height: auto;
@@ -26,8 +29,11 @@
     box-shadow: 0 0 0 1px rgba(0,0,0,0.15) inset;
     vertical-align: middle;
 }
+.orders{
+  margin-top:200px !important;
+}
 </style>
-<div class="container px-3 my-5 clearfix">
+<div class="container px-3 my-5 clearfix orders">
     <!-- Shopping cart table -->
     <div class="card">
         <div class="card-header">
@@ -64,7 +70,10 @@
                             {% for product_id in order.products|eval_val%}
                               {% for product in products %}
                                 {% if product.id == product_id%}
-                                  {{product.name}},
+                                  {{product.name}}
+                                  {% if not forloop.last %}
+                                    ,
+                                  {% endif %}
                                 {% endif %}
                               {% endfor %}
                             {% endfor %}

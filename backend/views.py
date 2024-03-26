@@ -82,6 +82,7 @@ def AllOrders(request):
         orders = Orders.objects.filter(user = request.user.id)
 
         return render(request,"all/orders.html",{"orders":orders})
+    return redirect('login')
 
 def ViewCart(request):
     if is_loggin(request):
@@ -371,7 +372,7 @@ def Checkout(request):
             )
             order.save()
             messages.success(request,"order placed")
-            return redirect('user-orders')
+            return redirect('orders')
         return render(request,"checkout/checkout.html",{"cart_total":total})
 
 def ContactForm(request):
