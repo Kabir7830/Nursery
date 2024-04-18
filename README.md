@@ -1,8 +1,11 @@
-# Preview of the Project
+# Nursery
+
+This is a practice-based project. It is made with bootstrap. This project is made to sell Plants to a wider range of audience. It is an e-commerce-based project where you can purchase any product and add it to your cart. You can also use coupon codes for a discount and can add products to your wishlist.
+
 Homepage
 ![Screenshot 2024-03-26 114746](https://github.com/Kabir7830/nursery/assets/108128109/a5cab5fd-bcbf-4a3d-ae6b-bf04b1e61635)
 
-Servies
+Services
 ![Screenshot 2024-03-26 114819](https://github.com/Kabir7830/nursery/assets/108128109/e173f7d5-b4b2-422e-beef-67ef19c5839e)
 
 About us
